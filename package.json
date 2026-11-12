@@ -6,18 +6,170 @@
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "patch:3meta": "node ops/patch-3meta.mjs",
-    "pretest": "npm run patch:3meta"
+    "build": "tsup src/lib/bazi/index.ts src/lib/bazi/chart.ts src/lib/bazi/compatibility.ts src/lib/bazi/relations.ts src/lib/bazi/relations-analysis.ts src/lib/bazi/research-feature-snapshot.ts src/lib/bazi/research-rules.ts src/lib/bazi/reverse.ts src/lib/bazi/serializer.ts src/lib/bazi/settings.ts src/lib/bazi/shen-sha.ts src/lib/bazi/structure-audit.ts src/lib/bazi/profile.ts --format esm,cjs --dts --clean",
+    "prepack": "npm run build"
   },
   "dependencies": {
-    "3meta": "2.6.0",
-    "lunar-typescript": "1.8.6",
+    "3meta": "https://codeload.github.com/weihaoyang/3meta-patched/tar.gz/97f726c6aba2dbbb4bc9e8c06471f0a2919a89ce",
+    "lunar-typescript": "https://codeload.github.com/weihaoyang/lunar-patched/tar.gz/c71ef553dd3540a95805538f27ed2e92a9a49fdf",
     "react": "19.2.4"
   },
   "devDependencies": {
     "@types/react": "^19",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4",
-    "@types/node": "^20"
+    "@types/node": "^20",
+    "tsup": "8.5.1"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "LICENSES",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weihaoyang/bazi-core.git"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./chart": {
+      "import": {
+        "types": "./dist/chart.d.ts",
+        "default": "./dist/chart.js"
+      },
+      "require": {
+        "types": "./dist/chart.d.cts",
+        "default": "./dist/chart.cjs"
+      }
+    },
+    "./compatibility": {
+      "import": {
+        "types": "./dist/compatibility.d.ts",
+        "default": "./dist/compatibility.js"
+      },
+      "require": {
+        "types": "./dist/compatibility.d.cts",
+        "default": "./dist/compatibility.cjs"
+      }
+    },
+    "./relations": {
+      "import": {
+        "types": "./dist/relations.d.ts",
+        "default": "./dist/relations.js"
+      },
+      "require": {
+        "types": "./dist/relations.d.cts",
+        "default": "./dist/relations.cjs"
+      }
+    },
+    "./relations-analysis": {
+      "import": {
+        "types": "./dist/relations-analysis.d.ts",
+        "default": "./dist/relations-analysis.js"
+      },
+      "require": {
+        "types": "./dist/relations-analysis.d.cts",
+        "default": "./dist/relations-analysis.cjs"
+      }
+    },
+    "./research-feature-snapshot": {
+      "import": {
+        "types": "./dist/research-feature-snapshot.d.ts",
+        "default": "./dist/research-feature-snapshot.js"
+      },
+      "require": {
+        "types": "./dist/research-feature-snapshot.d.cts",
+        "default": "./dist/research-feature-snapshot.cjs"
+      }
+    },
+    "./research-rules": {
+      "import": {
+        "types": "./dist/research-rules.d.ts",
+        "default": "./dist/research-rules.js"
+      },
+      "require": {
+        "types": "./dist/research-rules.d.cts",
+        "default": "./dist/research-rules.cjs"
+      }
+    },
+    "./reverse": {
+      "import": {
+        "types": "./dist/reverse.d.ts",
+        "default": "./dist/reverse.js"
+      },
+      "require": {
+        "types": "./dist/reverse.d.cts",
+        "default": "./dist/reverse.cjs"
+      }
+    },
+    "./serializer": {
+      "import": {
+        "types": "./dist/serializer.d.ts",
+        "default": "./dist/serializer.js"
+      },
+      "require": {
+        "types": "./dist/serializer.d.cts",
+        "default": "./dist/serializer.cjs"
+      }
+    },
+    "./settings": {
+      "import": {
+        "types": "./dist/settings.d.ts",
+        "default": "./dist/settings.js"
+      },
+      "require": {
+        "types": "./dist/settings.d.cts",
+        "default": "./dist/settings.cjs"
+      }
+    },
+    "./shen-sha": {
+      "import": {
+        "types": "./dist/shen-sha.d.ts",
+        "default": "./dist/shen-sha.js"
+      },
+      "require": {
+        "types": "./dist/shen-sha.d.cts",
+        "default": "./dist/shen-sha.cjs"
+      }
+    },
+    "./structure-audit": {
+      "import": {
+        "types": "./dist/structure-audit.d.ts",
+        "default": "./dist/structure-audit.js"
+      },
+      "require": {
+        "types": "./dist/structure-audit.d.cts",
+        "default": "./dist/structure-audit.cjs"
+      }
+    },
+    "./profile": {
+      "import": {
+        "types": "./dist/profile.d.ts",
+        "default": "./dist/profile.js"
+      },
+      "require": {
+        "types": "./dist/profile.d.cts",
+        "default": "./dist/profile.cjs"
+      }
+    }
   }
 }

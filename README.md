@@ -1,15 +1,25 @@
 # 八字算法与古籍对照 · Bazi Core
 
-从 [知几排盘](https://github.com/weihaoyang/qimen-llm-chart) 提取的八字 TypeScript 算法与测试，包含四柱、神煞、十神关系和结构分析。共享历法与奇门模块按运行依赖一并保留。运行前执行 `npm run patch:3meta`，其中也包含 lunar-typescript 的节气与起运修正。
+从 [知几排盘](https://github.com/weihaoyang/qimen-llm-chart) 提取的八字 TypeScript 算法与测试，包含四柱、神煞、十神关系和结构分析。共享历法与奇门模块按运行依赖一并保留。采用固定提交的 [3meta 修正版](https://github.com/weihaoyang/3meta-patched)和 [lunar 修正版](https://github.com/weihaoyang/lunar-patched)，无需安装后修改依赖。
 
 ```sh
 npm install
-npm run patch:3meta
 npm test
 npm run typecheck
 ```
 
-入口 `src/lib/bazi/chart.ts`。目前提供 TypeScript 源码，尚未发布 npm 包。
+入口 `src/lib/bazi/chart.ts`。发布后可通过 `npm install @singseq/bazi-core` 安装。
+
+发布后可直接调用：
+
+```ts
+import { buildBaziChartFromProfile } from "@singseq/bazi-core";
+import { normalizeProfileInput } from "@singseq/bazi-core/profile";
+
+const profile = normalizeProfileInput({ calendarMode: "solar", datetime: "2024-02-04T16:28", timeZone: "Asia/Shanghai", gender: "male", timeBasis: "civil" });
+const chart = buildBaziChartFromProfile(profile);
+console.log(chart.raw.pillars);
+```
 
 ## 古籍与案例
 
